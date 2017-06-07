@@ -1,0 +1,22 @@
+#Wed Jun 07 19:45:20 IRDT 2017
+renamed.6=classes.dex
+renamed.5=classes3.dex
+renamed.4=classes4.dex
+renamed.3=classes5.dex
+renamed.2=classes6.dex
+renamed.1=classes7.dex
+renamed.0=classes2.dex
+base.6=E\:\\Temp\\URLConnection\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_59bc527e31fffc84c5f7a40d973ff1ab4ffa7a88
+base.5=E\:\\Temp\\URLConnection\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_bac0c557b2450b86fb9ad32c83b200f048b67140
+base.4=E\:\\Temp\\URLConnection\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_c46c2f7e0bc21e6eb900a80bdea3680e60a1c65b
+base.3=E\:\\Temp\\URLConnection\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_cd9fd9810a35e8385278be09ecbf5e79857ae57f
+base.2=E\:\\Temp\\URLConnection\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_fa5b8c3064b249310e6db9eb487b6cc849fe188b
+base.1=E\:\\Temp\\URLConnection\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\support-annotations-25.3.1_4587515df70b11ae990e217c69c9b3a61733a049
+base.0=E\:\\Temp\\URLConnection\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_98d9b143c1e9d38b885d4a5c7f3d4b7f02deb44a
+file.6=E\:\\Temp\\URLConnection\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_59bc527e31fffc84c5f7a40d973ff1ab4ffa7a88\\classes.dex
+file.5=E\:\\Temp\\URLConnection\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_bac0c557b2450b86fb9ad32c83b200f048b67140\\classes.dex
+file.4=E\:\\Temp\\URLConnection\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_c46c2f7e0bc21e6eb900a80bdea3680e60a1c65b\\classes.dex
+file.3=E\:\\Temp\\URLConnection\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_cd9fd9810a35e8385278be09ecbf5e79857ae57f\\classes.dex
+file.2=E\:\\Temp\\URLConnection\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_fa5b8c3064b249310e6db9eb487b6cc849fe188b\\classes.dex
+file.1=E\:\\Temp\\URLConnection\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\support-annotations-25.3.1_4587515df70b11ae990e217c69c9b3a61733a049\\classes.dex
+file.0=E\:\\Temp\\URLConnection\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_98d9b143c1e9d38b885d4a5c7f3d4b7f02deb44a\\classes.dex
