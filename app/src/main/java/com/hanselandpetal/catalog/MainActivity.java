@@ -1,9 +1,5 @@
 package com.hanselandpetal.catalog;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -19,7 +15,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hanselandpetal.catalog.model.Flower;
-import com.hanselandpetal.catalog.parser.FlowerParser;
+import com.hanselandpetal.catalog.parser.JsonParser;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends Activity {
 
@@ -53,7 +53,7 @@ public class MainActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_get_data) {
             if (isOnline()) {
-                requestData("http://services.hanselandpetal.com/feeds/flowers.xml");
+                requestData("http://services.hanselandpetal.com/feeds/flowers.json");
             } else {
                 Toast.makeText(this, "Network isn't available", Toast.LENGTH_LONG).show();
             }
@@ -89,7 +89,7 @@ public class MainActivity extends Activity {
 
         @Override
         protected void onPreExecute() {
-            updateDisplay();
+            // updateDisplay();
 
             if (tasks.size() == 0) {
                 pb.setVisibility(View.VISIBLE);
@@ -108,11 +108,11 @@ public class MainActivity extends Activity {
         protected void onPostExecute(String result) {
 
             try {
-                flowerList = FlowerParser.parse(result);
+                flowerList = JsonParser.parse(result);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-//            updateDisplay(result);
+            updateDisplay();
 
             tasks.remove(this);
             if (tasks.size() == 0) {
