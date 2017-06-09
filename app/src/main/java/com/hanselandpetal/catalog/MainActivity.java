@@ -1,29 +1,33 @@
 package com.hanselandpetal.catalog;
 
-import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hanselandpetal.catalog.model.Flower;
+import com.hanselandpetal.catalog.model.FlowerAdapter;
 import com.hanselandpetal.catalog.parser.JsonParser;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends Activity {
+public class MainActivity extends ListActivity {
 
-    TextView output;
+    private static final String PHOTOS = "http://services.hanselandpetal.com/photos/";
+
     ProgressBar pb;
     List<MyTask> tasks;
     List<Flower> flowerList;
@@ -32,10 +36,6 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-//		Initialize the TextView for vertical scrolling
-        output = (TextView) findViewById(R.id.textView);
-        output.setMovementMethod(new ScrollingMovementMethod());
 
         pb = (ProgressBar) findViewById(R.id.progressBar1);
         pb.setVisibility(View.INVISIBLE);
@@ -67,12 +67,8 @@ public class MainActivity extends Activity {
     }
 
     protected void updateDisplay() {
-        if (flowerList != null) {
-            for (Flower flower : flowerList) {
-
-                output.append(flower.getName() + "\n");
-            }
-        }
+        FlowerAdapter adapter = new FlowerAdapter(this, R.layout.item_flower, flowerList);
+        setListAdapter(adapter);
     }
 
     protected boolean isOnline() {
@@ -85,11 +81,10 @@ public class MainActivity extends Activity {
         }
     }
 
-    private class MyTask extends AsyncTask<String, String, String> {
+    private class MyTask extends AsyncTask<String, String, List<Flower>> {
 
         @Override
         protected void onPreExecute() {
-            // updateDisplay();
 
             if (tasks.size() == 0) {
                 pb.setVisibility(View.VISIBLE);
@@ -98,18 +93,31 @@ public class MainActivity extends Activity {
         }
 
         @Override
-        protected String doInBackground(String... params) {
+        protected List<Flower> doInBackground(String... params) {
 
             String content = HttpManager.getData(params[0]);
-            return content;
+            try {
+                flowerList = JsonParser.parse(content);
+                for (Flower flower : flowerList) {
+
+                    String imageUrl = PHOTOS + flower.getPhoto();
+                    InputStream in = (InputStream) new URL(imageUrl).getContent();
+                    Bitmap bitmap = BitmapFactory.decodeStream(in);
+                    flower.setBitmap(bitmap);
+                    in.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return flowerList;
         }
 
         @Override
-        protected void onPostExecute(String result) {
+        protected void onPostExecute(List<Flower> result) {
 
             try {
-                flowerList = JsonParser.parse(result);
-            } catch (IOException e) {
+                flowerList = result;
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             updateDisplay();
